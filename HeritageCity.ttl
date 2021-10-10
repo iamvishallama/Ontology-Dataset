@@ -1,0 +1,761 @@
+@prefix : <http://www.semanticweb.org/vishal/ontologies/2017/5/HeritageCity#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crm: <http://purl.org/NET/cidoc-crm/core#> .
+
+<http://www.semanticweb.org/vishal/ontologies/2017/5/HeritageCity> rdf:type owl:Ontology .
+
+############################################################################################################
+################################################ CLASS #####################################################
+############################################################################################################
+
+:Country rdfs:subClassOf crm:E53_Place .
+:State rdfs:subClassOf crm:E53_Place .
+:City rdfs:subClassOf crm:E53_Place .
+crm:E53_Place rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:HeritageCity rdfs:subClassOf :City ;
+			  rdfs:label "Heritage City"@en .
+
+:TimeSpan rdfs:subClassOf crm:E52_Time-Span ;
+		  rdfs:label "Time Span" .
+crm:E52_Time-Span rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 
+
+:Dynasty rdfs:subClassOf :TimeSpan .
+
+
+
+######Painting######
+
+:Title a owl:Class ;
+	    rdfs:comment "" .
+:Subject a owl:Class ;
+		  rdfs:comment "" .
+:Artist a owl:Class ;
+		 rdfs:comment "" .
+:PaintingMedia a owl:Class ;
+		 	   rdfs:label "Medium" ;
+		 	   rdfs:comment "Different types of paint are usually identified by the medium that the pigment is suspended or embedded in, which determines the general working characteristics of the paint, such as viscosity, miscibility, solubility, drying time, etc." .
+:History a owl:Class ;
+		  rdfs:comment "" .
+:PaintingStyle a owl:Class ;
+		    	rdfs:label "Style" ;
+		  	    rdfs:comment "" .		 		 		   
+:TypeOfPainting rdfs:subClassOf :Painting, crm:E55_Type ;
+		 		rdfs:label "Types of painting" ;
+		 		rdfs:comment "" .
+
+:Sculpture rdfs:subClassOf :PhysicalArt ;
+		   rdfs:comment "The art of making two- or three-dimensional representative or abstract forms, especially by carving stone or wood or by casting metal or plaster." .
+
+
+:Painting rdfs:subClassOf :PhysicalArt ;
+		  rdfs:comment "Painting is a mode of creative expression, and the forms are numerous. Drawing, gesture (as in gestural painting), composition, narration (as in narrative art), or abstraction (as in abstract art), among other aesthetic modes, may serve to manifest the expressive and conceptual intention of the practitioner. Paintings can be naturalistic and representational (as in a still life or landscape painting), photographic, abstract, narrative, symbolistic (as in Symbolist art), emotive (as in Expressionism), or political in nature (as in Artivism)." .
+
+:MiniaturePainting rdfs:subClassOf :TypeOfPainting ;
+				   rdfs:label "Miniature\nPainting" ;
+				   rdfs:comment "Miniature painting is a traditional style of art that is very detailed, often referred to as painting or working “in miniature”. Because of their origins as illuminations, they are also painted to have as smooth of a surface as possible." .
+
+:MuralPainting rdfs:subClassOf :TypeOfPainting ;
+			   rdfs:label "Mural\nPainting" ;
+               rdfs:comment "A mural is any piece of artwork painted or applied directly on a wall, ceiling or other permanent surface. A distinguishing characteristic of mural painting is that the architectural elements of the given space are harmoniously incorporated into the picture." .
+
+:WallMural rdfs:subClassOf :MuralPainting ;
+           rdfs:label "Wall\nMural" .
+
+:CeilingMural rdfs:subClassOf :MuralPainting ;
+			  rdfs:label "Ceiling\nMural" .
+
+
+
+
+
+###########Cultural Heritage#############
+
+:CulturalHeritage a owl:Class ;
+				   rdfs:label "Cultural Heritage";
+				   rdfs:comment "Cultural Heritage is an expression of the ways of living developed by a community and passed on from generation to generation, including 	customs, practices, places, objects, artistic expressions and values." .
+:TangibleHeritage rdfs:subClassOf :CulturalHeritage ;
+				  rdfs:subClassOf :PhysicalHeritage ;
+				  rdfs:label "Tangible\nHeritage " ;
+				  rdfs:comment "A tangible heritage is one that can be stored and physically touched. This includes items produced by the cultural group such as traditional clothing, utensils (such as beadwork, water vessels), or vehicles (such as the ox wagon). Tangible heritages include great monuments such as temples, pyramids, and public monuments." .
+:IntangibleHeritage rdfs:subClassOf :CulturalHeritage ;
+					rdfs:comment "Intangible Cultural Heritage means the practices, representations, expressions, knowledge, skills – as well as the instruments, objects, artifacts and cultural spaces associated therewith – that communities, groups and, in some cases, individuals recognize as part of their cultural heritage. " ;
+					rdfs:label "Intangible\nHeritage" .
+:NaturalHeritage rdfs:subClassOf :CulturalHeritage ;
+				 rdfs:label "Natural\nHeritage" ;
+				 rdfs:comment "Natural heritage refers to the sum total of the elements of biodiversity, including flora and fauna and ecosystem types, together with associated geological structures and formations (geodiversity)." .
+
+:MovableProperty rdfs:subClassOf :TangibleHeritage .
+:ImmovableProperty rdfs:subClassOf :TangibleHeritage .
+
+:Height a owl:Class .
+:BuiltAt a owl:Class ;
+		  rdfs:label "Built at" .	
+
+:Architect a owl:Class .
+
+:ArchitecturalStyle a owl:Class ;
+					 rdfs:label "Architectural Style" .
+:TypeOfArchitecture rdfs:subClassOf crm:E55_Type ;
+					 rdfs:label "Architectural\nType" .	
+
+:Monument rdfs:subClassOf :ImmovableProperty ;
+		  rdfs:comment "A statue, building, or other structure erected to commemorate a notable person or event." .
+
+:LandScape rdfs:subClassOf :ImmovableProperty ;
+		   rdfs:subClassOf crm:E38_Image ;
+		   rdfs:label "Land\nScape" .
+
+:Building rdfs:subClassOf :ImmovableProperty .
+
+:Temple rdfs:subClassOf :ImmovableProperty .
+
+crm:E34_Inscription rdfs:subClassOf :ImmovableProperty .
+			 
+:PhysicalArt rdfs:subClassOf :TangibleHeritage ;
+			 rdfs:subClassOf crm:E38_Image ;
+			 rdfs:label "Physical Art" .
+crm:E38_Image rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+:Folklore rdfs:subClassOf :IntangibleHeritage ;
+			rdfs:comment "Folklore is the body of expressive culture shared by a particular group of people; it encompasses the traditions common to that culture, subculture or group. These include oral traditions such as tales, proverbs and jokes." .
+
+crm:E27_Site rdfs:subClassOf :TangibleHeritage .
+crm:E27_Site rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:Art a owl:Class ;
+	  rdfs:comment "Art is a diverse range of human activities in creating visual, auditory or performing artifacts (artworks), expressing the one's imaginative or technical skill, intended to be appreciated for their beauty or emotional power." .
+
+:PerformingArt rdfs:subClassOf :Art ;
+			   rdfs:subClassOf crm:E73_Information_Object ;
+			   rdfs:label "Performing\nArt" ;
+			   rdfs:subClassOf :IntangibleHeritage .
+crm:E73_Information_Object rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:Dance rdfs:subClassOf :PerformingArt .
+:Music rdfs:subClassOf :PerformingArt .
+:Theatre rdfs:subClassOf :PerformingArt .
+:Vocal rdfs:subClassOf :PerformingArt .
+:Pantomime rdfs:subClassOf :PerformingArt .
+:CostumesAndMasks rdfs:subClassOf :PerformingArt .
+
+:Acting rdfs:subClassOf :Theatre .
+:Singing rdfs:subClassOf :Theatre .
+:Dance rdfs:subClassOf :Theatre .
+:Music rdfs:subClassOf :Theatre .
+:Dialogue rdfs:subClassOf :Theatre .
+:Narration rdfs:subClassOf :Theatre .
+:Recitation rdfs:subClassOf :Theatre .
+:Puppetry rdfs:subClassOf :Theatre .
+
+:Sacred rdfs:subClassOf :Music .
+:Classical rdfs:subClassOf :Music .
+:Entertainment rdfs:subClassOf :Music .
+:PoliticalDimension rdfs:subClassOf :Music ;
+					rdfs:label "Political Dimension" .
+:EconomicDimension rdfs:subClassOf :Music ;
+				   rdfs:label "Economic Dimension" .
+
+:Tradition rdfs:subClassOf :PerformingArt ;
+		   rdfs:subClassOf :IntangibleHeritage .
+
+crm:E56_Language rdfs:subClassOf :IntangibleHeritage .
+crm:E56_Language rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:Biodiversity rdfs:subClassOf :NaturalHeritage ; 
+			  rdfs:comment "Biological diversity' means the variability among living organisms from all sources including, inter alia, terrestrial, marine and other aquatic ecosystems and the ecological complexes of which they are a part; this includes diversity within species, between species and of ecosystems." . 
+
+:Flora rdfs:subClassOf :Biodiversity ;
+	   rdfs:comment "The plants of a particular region, habitat, or geological period." .
+:Fauna rdfs:subClassOf :Biodiversity ;
+	   rdfs:comment "The animals of a particular region, habitat, or geological period" .
+
+:Geodiversity rdfs:subClassOf :NaturalHeritage ;
+			  rdfs:comment "Geodiversity may be defined as the natural range (diversity) of geological features (rocks, minerals, fossils, structures), geomorphological features (landforms and processes) and soil features that make up the landscape." . 
+
+crm:E62_String rdfs:subClassOf crm:E59_Primitive_Value .
+crm:E61_Time_Primitive rdfs:subClassOf crm:E59_Primitive_Value .
+crm:E60_Number rdfs:subClassOf crm:E59_Primitive_Value .
+
+crm:E60_Number rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E61_Time_Primitive rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E62_String rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E16_Measurement rdfs:subClassOf crm:E13_Attribute_Assignment ;
+	rdfs:label "Measurement"@en .
+crm:E13_Attribute_Assignment rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E16_Measurement rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E82_Actor_Appellation rdfs:subClassOf crm:E41_Appellation ;
+	rdfs:label "Actor Appellation"@en .
+crm:E82_Actor_Appellation rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E41_Appellation rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E51_Contact_Point rdfs:subClassOf crm:E41_Appellation .
+crm:E51_Contact_Point rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E41_Appellation rdfs:subClassOf crm:E90_Symbolic_Object .
+crm:E90_Symbolic_Object rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E90_Symbolic_Object rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E90_Symbolic_Object rdfs:subClassOf crm:E72_Legal_Object .
+crm:E72_Legal_Object rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E18_Physical_Thing rdfs:subClassOf crm:E72_Legal_Object .
+crm:E18_Physical_Thing rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E30_Right rdfs:subClassOf crm:E89_Propositional_Object .
+crm:E89_Propositional_Object rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E89_Propositional_Object rdfs:subClassOf crm:E28_Conceptual_Object .
+crm:E89_Propositional_Object rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E70_Thing rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E49_Time_Appellation rdfs:subClassOf crm:E41_Appellation .
+crm:E49_Time_Appellation rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E50_Date rdfs:subClassOf crm:E49_Time_Appellation .
+crm:E50_Date rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E4_Period rdfs:subClassOf crm:E2_Temporal_Entity .
+crm:E4_Period rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E5_Event rdfs:subClassOf crm:E4_Period .
+crm:E5_Event rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:BioLogicalObject rdfs:subClassOf crm:E19_Physical_Object ;
+	rdfs:label "Biological Object"@en .
+crm:E19_Physical_Object rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E21_Person rdfs:subClassOf crm:E20_Biological_Object , crm:E39_Actor .
+crm:E21_Person rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E64_End_of_Existence rdfs:subClassOf crm:E5_Event .
+crm:E68_Dissolution rdfs:subClassOf crm:E64_End_of_Existence .
+crm:E68_Dissolution rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+crm:E69_Death rdfs:subClassOf crm:E64_End_of_Existence . 		
+crm:E69_Death rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E64_End_of_Existence rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E63_Beginning_of_Existence rdfs:subClassOf crm:E5_Event .
+
+crm:E63_Beginning_of_Existence rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E12_Production rdfs:subClassOf crm:E63_Beginning_of_Existence .
+crm:E12_Production rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E74_Group rdfs:subClassOf crm:E39_Actor .
+crm:E74_Group rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E7_Activity rdfs:subClassOf crm:E5_Event .
+
+crm:E66_Formation rdfs:subClassOf crm:E7_Activity .
+crm:E66_Formation rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E71_Man-Made_Thing rdfs:subClassOf crm:E70_Thing .
+crm:E71_Man-Made_Thing rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E57_Material rdfs:subClassOf crm:E55_Type .
+crm:E57_Material rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:TypeCreation rdfs:subClassOf crm:E83_Type_Creation ;
+	rdfs:subClassOf crm:E65_Creation ;
+	rdfs:label "Type Creation"@en .
+crm:E83_Type_Creation rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E65_Creation rdfs:subClassOf crm:E7_Activity .
+crm:E65_Creation rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E55_Type rdfs:subClassOf crm:E28_Conceptual_Object .
+crm:E28_Conceptual_Object rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E56_Language rdfs:subClassOf crm:E55_Type .
+
+crm:E34_Inscription	rdfs:subClassOf crm:E33_Linguistic_Object . 
+crm:E34_Inscription rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E37_Mark rdfs:subClassOf crm:E36_Visual_Item .
+crm:E37_Mark rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E36_Visual_Item rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E38_Image rdfs:subClassOf crm:E36_Visual_Item .
+crm:E36_Visual_Item rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 
+
+crm:E29_Design_or_Procedure rdfs:subClassOf crm:E73_Information_Object ;
+	rdfs:label "Design or Procedure"@en .
+crm:E29_Design_or_Procedure rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E32_Authority_Document rdfs:subClassOf crm:E31_Document .
+crm:E31_Document rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E31_Document rdfs:subClassOf crm:E73_Information_Object .
+
+crm:E58_Measurement_Unit rdfs:subClassOf crm:E55_Type .
+
+crm:E17_Type_Assignment rdfs:subClassOf crm:E13_Attribute_Assignment .
+
+crm:E67_Birth rdfs:subClassOf crm:E63_Beginning_of_Existence .
+crm:E67_Birth rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+####################################################################################################################
+####################################################### PROPERTY ###################################################
+####################################################################################################################
+
+:byMother rdfs:subPropertyOf crm:P96_by_mother ;
+	rdfs:domain crm:E67_Birth ;
+	rdfs:range crm:E21_Person ;
+	rdfs:label "by mother"@en .
+crm:P96_by_mother rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .	
+
+:fromFather rdfs:subPropertyOf crm:P97_from_father ;
+	rdfs:domain crm:E67_Birth ;
+	rdfs:range crm:E21_Person ;
+	rdfs:label "from father"@en .
+crm:P97_from_father rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:P42_assigned rdfs:subPropertyOf crm:P42_assigned ;
+	rdfs:domain crm:E17_Type_Assignment ;
+	rdfs:range crm:E55_Type .
+
+:documents rdfs:subPropertyOf crm:P70_documents ;
+		rdfs:domain crm:E31_Document .
+crm:P70_documents rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .	
+
+:lists rdfs:subPropertyOf crm:P71_lists ;
+	rdfs:domain crm:E32_Authority_Document ;
+	rdfs:range crm:E55_Type .
+crm:P71_lists rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 	
+crm:E32_Authority_Document rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 	
+
+:usedSpecificTechnique rdfs:subPropertyOf crm:P33_used_specific_technique ;
+	rdfs:range crm:E29_Design_or_Procedure ;
+	rdfs:label "used specific technique"@en .
+crm:P33_used_specific_technique rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 	
+
+:isAssociatedWith rdfs:subPropertyOf crm:P69_is_associated_with ;
+	rdfs:domain crm:E29_Design_or_Procedure ;
+	rdfs:range crm:E29_Design_or_Procedure ;
+	rdfs:label "is associated with"@en .
+crm:P69_is_associated_with rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 	
+
+:represents rdfs:subPropertyOf crm:P138_represents ;
+	rdfs:domain crm:E36_Visual_Item .
+crm:P138_represents rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:showsVisualItem rdfs:subPropertyOf crm:P65_shows_visual_item ;
+	rdfs:subPropertyOf crm:P128_carries ;
+	rdfs:range crm:E36_Visual_Item ;
+	rdfs:label "shows visual item"@en .
+crm:P65_shows_visual_item rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+:hasLanguage rdfs:subPropertyOf crm:P72_has_language ;
+	rdfs:domain crm:E33_Linguistic_Object ;
+	rdfs:range crm:E56_Language ;
+	rdfs:label "has language"@en .
+crm:P72_has_language rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E33_Linguistic_Object rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasTranslation rdfs:subPropertyOf crm:P73_has_translation ;
+	rdfs:domain crm:E33_Linguistic_Object ;
+	rdfs:range crm:E33_Linguistic_Object ;
+	rdfs:label "has translation"@en .
+crm:P73_has_translation rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+:hasCreated rdfs:subPropertyOf crm:P94_has_created ;
+	rdfs:domain crm:E65_Creation ;
+	rdfs:range crm:E28_Conceptual_Object ;
+	rdfs:label "has created"@en .
+crm:P94_has_created rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .		
+
+:createdType rdfs:subPropertyOf crm:P135_created_type ;
+	rdfs:domain crm:E83_Type_Creation ;
+	rdfs:range crm:E55_Type ;
+	rdfs:label "created type"@en .
+crm:P135_created_type rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .	
+
+:usedObjectOfType rdfs:subPropertyOf crm:P125_used_object_of_type ;
+	rdfs:domain crm:E7_Activity ;
+	rdfs:range crm:E55_Type ;
+	rdfs:label "used object of type"@en .
+crm:P125_used_object_of_type rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasBroaderTerm rdfs:subPropertyOf crm:P127_has_broader_term ;
+	rdfs:domain crm:E55_Type ;
+	rdfs:range crm:E55_Type ;
+	rdfs:label "has broader term"@en .
+crm:P127_has_broader_term rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E55_Type rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasType rdfs:subPropertyOf crm:P2_has_type ;
+	rdfs:domain crm:E1_CRM_Entity ;
+	rdfs:range crm:E55_Type ;
+	rdfs:label "has type"@en .
+crm:E55_Type rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E1_CRM_Entity rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:P2_has_type rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:usedObjectOfType rdfs:subPropertyOf crm:P125_used_object_of_type ;
+	rdfs:domain crm:E7_Activity ;
+	rdfs:range crm:E55_Type ;
+	rdfs:label "used object of type"@en .
+crm:P125_used_object_of_type rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .	
+
+:hadGereralPurpose rdfs:subPropertyOf crm:P21_had_general_purpose ;
+	rdfs:domain crm:E7_Activity ;
+	rdfs:range crm:E55_Type ;
+	rdfs:label "had general purpose"@en .
+	crm:P21_had_general_purpose  rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .	 	
+
+:wasIntendedUseOf rdfs:subPropertyOf crm:P19_was_intended_use_of ;
+	rdfs:domain crm:E7_Activity ;
+	rdfs:range crm:E71_Man-Made_Thing ;
+	rdfs:label "was intended use of"@en .
+crm:P19_was_intended_use_of rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasFormed rdfs:subPropertyOf crm:P95_has_formed ;
+	rdfs:domain crm:E66_Formation ;
+	rdfs:range crm:E74_Group ;
+	rdfs:label "has formed"@en .
+crm:P95_has_formed rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 	
+
+:occuredInThePresenceOf rdfs:subPropertyOf crm:P12_occurred_in_the_presence_of ;
+	rdfs:domain crm:E5_Event ;
+	rdfs:range crm:E77_Persistent_Item ;
+	rdfs:label "occurred in the presence of"@en .
+crm:P12_occurred_in_the_presence_of rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 	
+
+
+:hadSpecificPurpose rdfs:subPropertyOf crm:P20_had_specific_purpose ;
+	rdfs:domain crm:E7_Activity ;
+	rdfs:range crm:E5_Event ;
+	rdfs:label "had specific purpose"@en .
+crm:P20_had_specific_purpose rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasFormerMember rdfs:subPropertyOf crm:P107_has_current_or_former_member ;
+	rdfs:domain crm:E74_Group ;
+	rdfs:range crm:E39_Actor ;
+	rdfs:label "has current or former member"@en .
+crm:P107_has_current_or_former_member rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:dissolved rdfs:subPropertyOf crm:P99_dissolved ;
+	rdfs:domain crm:E68_Dissolution ;
+	rdfs:range crm:E74_Group ;
+	rdfs:label "dissolved"@en .
+crm:P99_dissolved rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasCurrentPermanentLocation rdfs:subPropertyOf crm:P54_has_current_permanent_location ;
+	rdfs:domain crm:E19_Physical_Object ;
+	rdfs:range crm:E53_Place ;
+	rdfs:label "has current permanent location"@en .
+crm:P54_has_current_permanent_location rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasProduced rdfs:subPropertyOf crm:P108_has_produced ;
+	rdfs:domain crm:E12_Production ;
+	rdfs:label "has produced"@en .
+crm:P108_has_produced rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:wasDeathOf rdfs:subPropertyOf crm:P100_was_death_of ;
+	rdfs:domain crm:E69_Death ;
+	rdfs:range crm:E21_Person ;
+	rdfs:label "was death of"@en .
+crm:P100_was_death_of rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasNumberOfParts rdfs:subPropertyOf crm:P57_has_number_of_parts ;
+	rdfs:domain crm:E19_Physical_Object ;
+	rdfs:range rdfs:Literal ;
+	rdfs:label "has number of parts"@en .
+crm:P57_has_number_of_parts rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+:tookPlaceOnOrWithin rdfs:subPropertyOf crm:P8_took_place_on_or_within ;
+	rdfs:domain crm:E4_Period ;
+	rdfs:range crm:E19_Physical_Object ;
+	rdfs:label "took place on or within"@en .
+crm:P8_took_place_on_or_within rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasTimeSpan rdfs:subPropertyOf crm:P4_has_time-span ;
+	rdfs:domain crm:E2_Temporal_Entity ;
+	rdfs:range crm:E52_Time-Span ;
+	rdfs:label "has time-span"@en .
+crm:P4_has_time-span rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+
+:endIsQualifiedBy rdfs:subPropertyOf crm:P80_end_is_qualified_by ;
+	rdfs:domain crm:E52_Time-Span ;
+	rdfs:range rdfs:Literal ;
+	rdfs:label "end is qualified by"@en .
+crm:P80_end_is_qualified_by rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:ongoingThroughout rdfs:subPropertyOf crm:P81_ongoing_throughout ;
+	rdfs:domain crm:E52_Time-Span ;
+	rdfs:range rdfs:Literal ;
+	rdfs:label "ongoing throughout"@en .
+crm:P81_ongoing_throughout rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:atSomeTimeWithin rdfs:subPropertyOf crm:P82_at_some_time_within ;
+	rdfs:domain crm:E52_Time-Span ;
+	rdfs:range rdfs:Literal ;
+	rdfs:label "at some time within"@en .
+crm:P82_at_some_time_within rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:possesses rdfs:subPropertyOf crm:P75_possesses ;
+	rdfs:domain crm:E39_Actor ;
+	rdfs:range crm:E30_Right .
+crm:P75_possesses rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:beginningIsQualifiedBy rdfs:subPropertyOf crm:P79_beginning_is_qualified_by ;
+	rdfs:domain crm:E52_Time-Span ;
+	rdfs:range rdfs:Literal ;
+	rdfs:label "beginning is qualified by"@en .
+crm:P79_beginning_is_qualified_by rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasComponent rdfs:subPropertyOf crm:P148_has_component ;
+	rdfs:domain crm:E89_Propositional_Object ;
+	rdfs:range crm:E89_Propositional_Object ;
+	rdfs:label "has component"@en .
+crm:P148_has_component rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .	
+
+:hasComponent rdfs:subPropertyOf crm:P148_has_component ;
+	rdfs:domain crm:E89_Propositional_Object ;
+	rdfs:range crm:E89_Propositional_Object ;
+	rdfs:label "has component"@en .
+crm:P148_has_component rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .	
+
+:rightHeldBy rdfs:subPropertyOf crm:P105_right_held_by ; 
+	rdfs:domain crm:E72_Legal_Object ;
+	rdfs:range crm:E39_Actor ;
+	rdfs:label "right held by"@en .
+crm:P105_right_held_by rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 
+
+:isSubjectOf rdfs:subPropertyOf crm:P104_is_subject_to ;
+	rdfs:domain crm:E72_Legal_Object ;
+	rdfs:range crm:E30_Right ;
+	rdfs:label "is subject to"@en .
+crm:P104_is_subject_to rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:isComposedOf rdfs:subPropertyOf crm:P106_is_composed_of ;
+	rdfs:domain crm:E90_Symbolic_Object ;
+	rdfs:range crm:E90_Symbolic_Object ;
+	rdfs:label "is composed of"@en .
+crm:P106_is_composed_of rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasAlternativeForm rdfs:subPropertyOf crm:P139_has_alternative_form ;
+	rdfs:domain crm:E41_Appellation ;
+	rdfs:range crm:E41_Appellation ;
+	rdfs:label "has alternative form"@en .
+crm:P139_has_alternative_form rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+:hasResidence rdfs:subPropertyOf crm:P74_has_current_or_former_residence ;
+	rdfs:domain crm:E39_Actor ;
+	rdfs:range crm:E53_Place ;
+	rdfs:label "has current or former residence"@en .
+crm:P74_has_current_or_former_residence rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E39_Actor rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasContactPoint rdfs:subPropertyOf crm:P76_has_contact_point ;
+	rdfs:domain crm:E39_Actor ;
+	rdfs:range crm:E51_Contact_Point ;
+	rdfs:label "has contact point"@en .
+crm:P76_has_contact_point rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+:isIdentifiedBy	rdfs:subPropertyOf crm:P131_is_identified_by ;
+	rdfs:domain crm:E39_Actor ;
+	rdfs:range crm:E82_Actor_Appellation ;
+	rdfs:label "is identified by"@en .
+crm:P131_is_identified_by rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E82_Actor_Appellation rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+:showsFeaturesOf rdfs:subPropertyOf crm:P130_shows_features_of ; 	
+	rdfs:domain crm:E70_Thing ;
+	rdfs:range crm:E70_Thing ;
+	rdfs:label "shows features of"@en .
+crm:P130_shows_features_of rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E70_Thing rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hadAtMostDuration rdfs:subPropertyOf crm:P84_had_at_most_duration ;
+	rdfs:domain crm:E52_Time-Span ;
+	rdfs:range crm:E54_Dimension ;
+	rdfs:label "had at most duration"@en .
+crm:P84_had_at_most_duration rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E52_Time-Span rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:fallsWithin rdfs:subPropertyOf crm:P86_falls_within ;
+	rdfs:domain crm:E52_Time-Span ;
+	rdfs:range crm:E52_Time-Span ;
+	rdfs:label "falls within"@en .
+crm:P86_falls_within rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:observedDimension rdfs:subPropertyOf crm:P40_observed_dimension ;
+	rdfs:domain crm:E16_Measurement ;
+	rdfs:range crm:E54_Dimension ;
+	rdfs:label "observed dimension"@en .
+crm:P40_observed_dimension 	rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E16_Measurement	rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:measured rdfs:subPropertyOf crm:P39_measured ;
+	rdfs:domain crm:E16_Measurement ;
+	rdfs:label "measured"@en .
+crm:P39_measured rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .	
+
+:hadAtLeastDuration rdfs:subPropertyOf crm:P83_had_at_least_duration ;
+	rdfs:domain crm:E52_Time-Span ;
+	rdfs:range crm:E54_Dimension ;
+	rdfs:label "had at least duration"@en .
+crm:P83_had_at_least_duration rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasUnit rdfs:subPropertyOf crm:P91_has_unit ;
+		 rdfs:domain crm:E54_Dimension ;
+		 rdfs:range crm:E58_Measurement_Unit .
+crm:P91_has_unit rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E58_Measurement_Unit rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasValue rdfs:subPropertyOf crm:P90_has_value ;
+	rdfs:domain crm:E54_Dimension ;
+	rdfs:range crm:E59_Primitive_Value ;
+	rdfs:label "has value"@en .
+crm:P90_has_value rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E59_Primitive_Value rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:isIdentifiedBy rdfs:subPropertyOf crm:P78_is_identified_by ;
+	rdfs:domain crm:E52_Time-Span ;
+	rdfs:range crm:E49_Time_Appellation ;
+	rdfs:label "is identified by"@en .
+crm:P78_is_identified_by rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> . 
+
+:hasDimension rdfs:subPropertyOf crm:P43_has_dimension ;
+	rdfs:label "has dimension" ;
+	rdfs:domain crm:E70_Thing ;
+	rdfs:range crm:E54_Dimension .
+crm:P43_has_dimension rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E54_Dimension rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+:fallsInCountry a owl:ObjectProperty ;
+				 rdfs:subPropertyOf crm:P89_falls_within ;			     
+			     rdfs:label "falls in country" ;
+			     rdfs:domain :State ;
+			     rdfs:range :Country .
+crm:P89_falls_within rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:fallsInState a owl:ObjectProperty ;
+			   rdfs:subPropertyOf crm:P89_falls_within ;
+			   rdfs:label "falls in state" ;
+			   rdfs:domain :City ;
+			   rdfs:range :State .
+
+:hasHeritage a owl:ObjectProperty ;
+		rdfs:domain :HeritageCity ;
+		rdfs:range :CulturalHeritage .
+		
+:hasEvent a owl:ObjectProperty ;
+		rdfs:domain :HeritageCity ;
+		rdfs:range crm:E5_Event . 
+crm:E5_Event rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:participatedIn a owl:ObjectProperty ;
+				rdfs:subPropertyOf crm:P11_had_participant ;
+				rdfs:label "participated in" ;
+				rdfs:domain crm:E5_Event ;
+				rdfs:range crm:E39_Actor .
+crm:P11_had_participant rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E39_Actor rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E5_Event rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+
+:wasPresentAt a owl:ObjectProperty ;
+				rdfs:subPropertyOf crm:P12_occurred_in_the_presence_of ;
+				rdfs:label "was present at" ;
+				rdfs:domain crm:E5_Event ;
+				rdfs:range crm:E77_Persistent_Item .
+crm:P12_occurred_in_the_presence_of rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E77_Persistent_Item rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+crm:E39_Actor rdfs:subClassOf crm:E77_Persistent_Item .  
+
+
+####Painting####
+
+:hasTitle a owl:ObjectProperty ;
+		   rdfs:label "has title" ;
+		   rdfs:domain :Painting ;
+		   rdfs:range :Title .
+
+:hasSubject a owl:ObjectProperty ;
+			 rdfs:label "has subject" ;
+			 rdfs:domain :Painting ;
+			 rdfs:range :Subject.
+
+:hasArtist a owl:ObjectProperty ;
+			 rdfs:label "has an Artist" ;
+			 rdfs:domain :Painting ;
+			 rdfs:range :Artist .
+
+:hasPaintingMedia a owl:ObjectProperty ;
+			 rdfs:label "has painting media" ;
+			 rdfs:domain :Painting ;
+			 rdfs:range :PaintingMedia.
+
+:hasHistory  a owl:ObjectProperty ;
+			 rdfs:label "has history" ;
+			 rdfs:domain :Painting ;
+			 rdfs:range :History.
+
+:hasPaintingStyle a owl:ObjectProperty ;
+				   rdfs:label "has painting style" ;
+				   rdfs:domain :Painting ;
+				   rdfs:range :PaintingStyle .	 		 		   
+
+:hasDimension a owl:ObjectProperty ;
+			   rdfs:subPropertyOf crm:P43_has_dimension ;
+			   rdfs:label "has dimensions" ;
+			   rdfs:domain :Painting ;
+			   rdfs:range crm:E54_Dimension .	 	
+crm:P43_has_dimension rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+crm:E54_Dimension rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .
+
+:hasSpatialCoordinates a owl:ObjectProperty ;
+						rdfs:label "has spatial coordinate" ;
+						rdfs:domain crm:E53_Place ;
+						rdfs:range crm:E47_Spatial_Coordinates .
+crm:E47_Spatial_Coordinates rdfs:isDefinedBy <http://purl.org/NET/cidoc-crm/core> .						
+
+:hasHeight a owl:ObjectProperty ;
+			rdfs:label "has height" ;
+			rdfs:domain :Monument ;
+			rdfs:range :Height .
+
+:wasBuiltAt a owl:ObjectProperty ;
+		   	 rdfs:label "was built at " ;
+		   	 rdfs:domain :Monument ;
+		   	 rdfs:range :BuiltAt .
+
+:builtBy a owl:ObjectProperty ;
+		  rdfs:label "was built by" ;
+		  rdfs:domain :Monument ;
+		  rdfs:range :Architect .
+
+:hasArchitecturalStyle a owl:ObjectProperty ;
+		  			 	rdfs:label "has architectural style" ;
+		   				rdfs:domain :Monument ;
+		   				rdfs:range :ArchitecturalStyle .
+
+:hasArchitecturalType rdfs:subPropertyOf crm:P2_has_type ;
+		 rdfs:label "is of type" ;
+		 rdfs:domain :Monument ;
+		 rdfs:range :TypeOfArchitecture . 		  
+
+:hasCriteria a owl:ObjectProperty ;
+			  rdfs:label "has selection criteria" ;
+			  rdfs:domain :Monument ;
+			  rdfs:range crm:E60_Number .		 
